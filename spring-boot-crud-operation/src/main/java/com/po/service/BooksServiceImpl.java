@@ -26,8 +26,7 @@ public class BooksServiceImpl
 	return booksRepository.findById(id).get();
 	}
     @Override
-	public Books saveOrUpdate(Books books)
-	{
+	public Books saveOrUpdate(Books books) {
 	return booksRepository.save(books);
 	}
 

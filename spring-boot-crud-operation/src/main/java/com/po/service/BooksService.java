@@ -1,21 +1,24 @@
 package com.po.service;
 import java.util.List;
+
+import org.springframework.util.MultiValueMap;
+
 import com.po.model.Books;
+import com.po.exception.BookAlreadyExistsException;
+import com.po.exception.BookNotFoundException;
 
 
-public interface BooksService 
-{
+public interface BooksService {
+
+	Books saveOrUpdate(Books books) throws BookAlreadyExistsException;
 	
-	// Save operation
-	Books saveOrUpdate(Books books);
+	List<Books> getAllBooks() throws BookNotFoundException;
 	
-	// Read operation
-	List<Books> getAllBooks();
+	Books update(Books books, int bookid) throws BookAlreadyExistsException;;
 	
-	// Update operation
-	Books update(Books books, int bookid);
-	
-	// Delete operation 
-	void delete(int id);
+	void delete(int id) throws BookNotFoundException;
+
+	@SuppressWarnings("rawtypes")
+	MultiValueMap getBooksById(int bookid);
 
 }
